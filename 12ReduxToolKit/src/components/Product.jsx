@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/slice";
+import { addToCart, clearCart, removeFromCart } from "../redux/slice";
 
 function Product() {
 
@@ -13,6 +13,8 @@ function Product() {
                 <div className="product-name">Wireless Headphones</div>
                 <div className="product-price">$49.99</div>
                 <button onClick={() => dispatch(addToCart(1))} className="add-btn">Add to Cart</button>
+                <button onClick={() => dispatch(removeFromCart(1))} className="add-btn-remove">Remove from Cart</button>
+                <button onClick={() => dispatch(clearCart())} className="add-btn">Clear Cart</button>
             </div>
         </div>
     )
