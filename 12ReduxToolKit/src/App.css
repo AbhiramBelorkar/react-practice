@@ -158,3 +158,31 @@
 .product-card button:nth-of-type(2):hover {
   background-color: #b02a37;
 }
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn.added {
+  background-color: #28a745;
+  cursor: default;
+}
+
+.btn.added:hover {
+  background-color: #28a745; /* stays same on hover */
+}
+
+.btn.disable {
+  background-color: grey;
+}

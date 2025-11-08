@@ -10,6 +10,8 @@ function Product() {
     const productSelector = useSelector((state) => state.product.items)
     console.log("product selector count: "+productSelector.length);
 
+    const cartSelector = useSelector((state)=> state.cart.items)
+
     useEffect(() => {
         fetchProducts()
         dispatch(fetchProducts())
@@ -26,7 +28,16 @@ function Product() {
                         <div className="brand">{item.brand}</div>
                         <div className="price">${item.price}</div>
                         <div className="rating">⭐ {item.rating}</div>
-                        <button onClick={()=>dispatch(addToCart(item))} className="btn">Add to cart</button>
+                        {
+                            cartSelector.find((cartItem) => cartItem.id === item.id)
+                            ? 
+                            ( <button className="btn disable">Added to cart</button> )
+                            :
+                            (
+                            <button onClick={()=>dispatch(addToCart(item))} className="btn">Add to cart</button>
+                            )
+                        }
+                        
                     </div>
                 </div>
             ))}
