@@ -1,22 +1,39 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, clearCart, removeFromCart } from "../redux/slice";
+import { useEffect } from "react";
+import { fetchProducts } from "../redux/productSlice";
 
 function Product() {
 
     const dispatch = useDispatch()
 
+    const productSelector = useSelector((state) => state.product.items)
+    console.log("product selector count: "+productSelector.length);
+
+    useEffect(() => {
+        fetchProducts()
+        dispatch(fetchProducts())
+    }, [])
+
     return (
 
         <div className="product-container">
-            <div className="product-card">
-                <img src="https://www.boat-lifestyle.com/cdn/shop/files/Artboard1_ac192d39-3b63-4a80-a049-73e0a6c2b149.png?v=1728871112" alt="Product Image" />
-                <div className="product-name">Wireless Headphones</div>
-                <div className="product-price">$49.99</div>
-                <button onClick={() => dispatch(addToCart(1))} className="add-btn">Add to Cart</button>
-                <button onClick={() => dispatch(removeFromCart(1))} className="add-btn-remove">Remove from Cart</button>
-                <button onClick={() => dispatch(clearCart())} className="add-btn">Clear Cart</button>
-            </div>
+            {productSelector?.map((item) => (
+                <div className="product-card" key={item.id}>
+                    <img src={item.thumbnail} alt={item.title} />
+                    <div className="content">
+                        <div className="title">{item.title}</div>
+                        <div className="brand">{item.brand}</div>
+                        <div className="price">${item.price}</div>
+                        <div className="rating">⭐ {item.rating}</div>
+                        <button onClick={()=>dispatch(addToCart(item))} className="btn">Add to cart</button>
+                    </div>
+                </div>
+            ))}
         </div>
+
+
+
     )
 }
 

@@ -2,10 +2,13 @@ import { useSelector } from "react-redux";
 
 function Cart() {
 
-    const selector = useSelector((state)=> state.cart.value);
+    const cartSelector = useSelector((state)=> state.cart.items);
+    console.log("cart selector count: "+cartSelector.length);
+    
+    
 
     return (
-        <div className="cart">🛒 {selector}</div>
+        <div className="cart">🛒 {cartSelector.length}</div>
     )
 }
 
