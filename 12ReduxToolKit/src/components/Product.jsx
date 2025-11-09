@@ -31,7 +31,7 @@ function Product() {
                         {
                             cartSelector.find((cartItem) => cartItem.id === item.id)
                             ? 
-                            ( <button className="btn disable">Added to cart</button> )
+                            ( <button onClick={()=> dispatch(removeFromCart(item))} className="btn disable">Remove from cart</button> )
                             :
                             (
                             <button onClick={()=>dispatch(addToCart(item))} className="btn">Add to cart</button>
