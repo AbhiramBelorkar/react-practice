@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, clearCart, removeFromCart } from "../redux/slice";
 import { useEffect } from "react";
 import { fetchProducts } from "../redux/productSlice";
+import Header from "./Header";
 
 function Product() {
 
@@ -18,7 +19,6 @@ function Product() {
     }, [])
 
     return (
-
         <div className="product-container">
             {productSelector?.map((item) => (
                 <div className="product-card" key={item.id}>
@@ -42,7 +42,6 @@ function Product() {
                 </div>
             ))}
         </div>
-
 
 
     )

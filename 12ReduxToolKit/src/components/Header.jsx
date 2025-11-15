@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Cart from "./Cart";
 
 function Header() {
@@ -6,10 +7,7 @@ function Header() {
             <h1>ShopEase</h1>
 
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <Link to="/">Home</Link>
             </nav>
 
             <Cart ></Cart>
